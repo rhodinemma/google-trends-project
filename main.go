@@ -9,25 +9,25 @@ import(
 )
 
 type RSS struct{
-	XMLName xml.Name
-	Channel *Channel
+	XMLName xml.Name `xml:"rss"`
+	Channel *Channel `xml:"channel"`
 }
 
 type Channel struct{
-	Title string
-	ItemList []Item
+	Title string `xml:"title"`
+	ItemList []Item `xml:"item"`
 }
 
 type Item struct{
-	Title string
-	Link string
-	Traffic string
-	NewsItems []News
+	Title string `xml:"title"`
+	Link string	`xml:"link"`
+	Traffic string `xml:"approx_traffic"`
+	NewsItems []News `xml:"news_item"`
 }
 
 type News struct{
-	Headline string
-	HeadlineLink string
+	Headline string `xml:"news_item_title"`
+	HeadlineLink string `xml:"news_item_url"`
 }
 
 func main() {
