@@ -38,8 +38,21 @@ func main() {
 	err := xml.Unmarshal(data, &r)
 
 	if err != nil {
-		fmt.Println("Error: ", err)
+		fmt.Println("Error:", err)
 		os.Exit(1)
+	}
+
+	fmt.Println("\n Below are all the Google Search Trends For Today !")
+	fmt.Println("-----------------------------------------------------")
+
+	for i := range r.Channel.ItemList {
+		rank := (i + 1)
+		fmt.Println("#", rank)
+		fmt.Println("Search Term:", r.Channel.ItemList[i].Title)
+		fmt.Println("Link to the Trend:", r.Channel.ItemList[i].Link)
+		fmt.Println("Headline:", r.Channel.ItemList[i].NewsItems[0].Headline)
+		fmt.Println("Link to article:", r.Channel.ItemList[i].NewsItems[0].HeadlineLink)
+		fmt.Println("-----------------------------------------------------")
 	}
 }
 
